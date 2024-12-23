@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: Orders
+  kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      retries: 5
+      properties:
+        retry.backoff.ms: 1000
+        acks: all
+logging:
+  level:
+    org.apache.kafka.clients.producer: ERROR
+server:
+  port: 8080
