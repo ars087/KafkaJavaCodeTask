@@ -1,0 +1,21 @@
+kafka:
+  topic:
+    name: web_log
+    partitions: 3
+    replication-factor: 1
+
+spring:
+  application:
+    name: KafkaPartition
+  kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: order-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    bootstrap-servers: localhost:9092
+
+server:
+  port: 8080
